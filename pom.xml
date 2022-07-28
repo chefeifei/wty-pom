@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -32,19 +32,7 @@
 
 	<dependencies>
 
-		<dependency>
-			<groupId>com.sgm.allspark</groupId>
-			<artifactId>allspark-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sgm.allspark</groupId>
-			<artifactId>allspark-swagger</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sgm.lite</groupId>
-			<artifactId>lf-auth-spring-boot-starter</artifactId>
-			<version>${lf-auth.version}</version>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,28 +65,7 @@
 				<version>${redisson.version}</version>
 		</dependency>
 	
-		<dependency>
-			<groupId>com.sgm.dmsii.framework</groupId>
-			<artifactId>spring-boot-starter-rocketmq</artifactId>
-			<version>${spring-boot-starter-rocketmq.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>io.netty</groupId>
-					<artifactId>netty-all</artifactId>
-				</exclusion>
-				</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.sgm.pcrs</groupId>
-			<artifactId>pcrs-common</artifactId>
-			<version>${pcrs-common.version}</version>
-			  <exclusions>
-				<exclusion>
-					<groupId>com.sgm.dmsii.framework</groupId>
-			        <artifactId>spring-boot-starter-rocketmq</artifactId>
-				</exclusion>
-				</exclusions>
-		</dependency>
+		
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
