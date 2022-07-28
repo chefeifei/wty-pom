@@ -1,0 +1,299 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sgm.pcrs</groupId>
+	<artifactId>pcrs-wty-backend</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<parent>
+		<groupId>com.sgm.allspark</groupId>
+		<artifactId>allspark-parent</artifactId>
+		<version>1.0.1.RELEASE</version>
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.build.timestamp.format>yyyy-MM-dd_HHmmss</maven.build.timestamp.format>
+		<oracle.version>12.1.0.2.0</oracle.version>
+		<sgm-worklist.version>1.1</sgm-worklist.version>
+		<pagehelper.spring-boot.version>1.3.0</pagehelper.spring-boot.version>
+	    <!-- redisson 3.11.1-->
+		<redisson.version>3.16.1</redisson.version>
+		<!-- update version  -->
+		<fastjson.version>1.2.83</fastjson.version>
+		<spring-boot-starter-rocketmq.version>2.0.0.3-SNAPSHOT</spring-boot-starter-rocketmq.version>
+		<lf-auth.version>1.1.0-SNAPSHOT</lf-auth.version>
+		<pcrs-common.version>2.0.0-SNAPSHOT</pcrs-common.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.sgm.allspark</groupId>
+			<artifactId>allspark-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sgm.allspark</groupId>
+			<artifactId>allspark-swagger</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sgm.lite</groupId>
+			<artifactId>lf-auth-spring-boot-starter</artifactId>
+			<version>${lf-auth.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		 </dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>${pagehelper.spring-boot.version}</version>
+		</dependency>
+		
+		<!-- redisson 3.11.1-->
+	    <dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>${redisson.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.sgm.dmsii.framework</groupId>
+			<artifactId>spring-boot-starter-rocketmq</artifactId>
+			<version>${spring-boot-starter-rocketmq.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.netty</groupId>
+					<artifactId>netty-all</artifactId>
+				</exclusion>
+				</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sgm.pcrs</groupId>
+			<artifactId>pcrs-common</artifactId>
+			<version>${pcrs-common.version}</version>
+			  <exclusions>
+				<exclusion>
+					<groupId>com.sgm.dmsii.framework</groupId>
+			        <artifactId>spring-boot-starter-rocketmq</artifactId>
+				</exclusion>
+				</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>${oracle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<!-- BPM Work List 12c -->
+		<dependency>
+			<groupId>com.sgm.bpm</groupId>
+			<artifactId>bpmapi-12.2.1.3.0.12C</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sgm.bpm</groupId>
+			<artifactId>sgm-worklist-12.2.1.3.0.12C</artifactId>
+			<version>${sgm-worklist.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>oracle</groupId>
+					<artifactId>ojdbc7</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- BPM Work List 12c 打包时注释到 -->
+		<dependency>
+			<groupId>com.oracle.bpm12c.122130</groupId>
+			<artifactId>wlfullclient</artifactId>
+			<version>12.2.1.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.bpm12c.122130</groupId>
+			<artifactId>com.oracle.webservices.fmw.client</artifactId>
+			<version>12.2.1.3</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		  <dependency>
+			  <groupId>org.apache.poi</groupId>
+			  <artifactId>poi-ooxml</artifactId>
+		  </dependency>
+
+	    <dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>easyexcel</artifactId>
+		    <version>2.2.10</version>
+	    </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<!-- 本地环境 -->
+			<id>local</id>
+			<properties>
+				<profiles.active>local</profiles.active>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 开发环境 -->
+			<id>dev</id>
+			<properties>
+				<profiles.active>dev</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>qa</id>
+			<properties>
+				<profiles.active>qa</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 压测环境 -->
+			<id>perf</id>
+			<properties>
+				<profiles.active>perf</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<profiles.active>prod</profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>env/${profiles.active}</directory>
+				<!--<includes>
+					<include>application.properties</include>
+					<include>oracle_bpm_config.xml</include>
+				</includes>-->
+			</resource>
+		</resources>
+		<plugins>
+			<!-- Mybatis generator代码生成插件 配置 -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<configurationFile>generate/generatorConfig.xml</configurationFile>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+			</plugin>
+			<!-- maven插件编码,打包等配置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- 使用原生war打包，不支持Springboot -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>${project.artifactId}_${profiles.active}_${maven.build.timestamp}</warName>
+				    <excludeArtifactIds>wlfullclient,com.oracle.webservices.fmw.client,spring-boot-devtools</excludeArtifactIds>
+				    <packagingExcludes>
+                            WEB-INF/lib/tomcat-embed-*.jar,
+                            WEB-INF/lib/spring-boot-starter-tomcat-*.jar
+                            <!-- WEB-INF/lib/swagger*-1.5*.jar -->
+                     </packagingExcludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>sgm-maven</id>
+			<name>sgm-maven</name>
+			<url>http://nexus.sgm.saic-gm.com/repository/sgm-maven/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sgm-maven</id>
+			<name>sgm-maven</name>
+			<url>http://nexus.sgm.saic-gm.com/repository/sgm-maven/</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
+
