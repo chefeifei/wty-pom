@@ -24,7 +24,7 @@
 	    <!-- redisson 3.11.1-->
 		<redisson.version>3.17.5</redisson.version>
 		<!-- update version  -->
-		<fastjson.version>1.2.83</fastjson.version>
+		<fastjson.version>1.2.83_noneautotype</fastjson.version>
 		<spring-boot-starter-rocketmq.version>2.0.0.3-SNAPSHOT</spring-boot-starter-rocketmq.version>
 		<lf-auth.version>1.1.0-SNAPSHOT</lf-auth.version>
 		<pcrs-common.version>2.0.0-SNAPSHOT</pcrs-common.version>
